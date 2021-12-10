@@ -8,25 +8,33 @@ namespace PierresBakery.Models
 {
   public class Store
   {
-    public static List<object> shoppingList { get; set; }
+    public Dictionary<object, int> shoppingList { get; set; }
 
     public Store()
     {
-      shoppingList = new List<object>();
+      shoppingList = new Dictionary<object, int>();
     }
 
-    public void AddToShoppingList(object item)
+    public void AddToShoppingList(object item, int quantity)
     {
-      shoppingList.Add(item);
+      shoppingList.Add(item, quantity);
     }
 
-    public void DisplayList()
+    public static Dictionary<object, int> GetShoppingList()
     {
-      for(int i = 0; i < shoppingList.Count; i++)
-      {
-        System.Console.WriteLine(shoppingList[i]);
-      }
+      return shoppingList;
     }
+
+    // public static void DisplayShoppingList()
+    // {
+    //   for
+    // }
+
+    
+
+  
+
+
   }
 
 }
