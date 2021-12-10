@@ -33,7 +33,7 @@ After following the Setup/Installation steps above:
 ## Using the Application in the Console
 After following the Setup/Installation steps above: 
   * Navigate to the PierresBakery folder.
-  * Run the application  with the command _dotnet run.
+  * Run the application  with the command _dotnet run_.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
