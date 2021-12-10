@@ -8,7 +8,7 @@ namespace PierresBakery.Models
 {
   public class Store
   {
-    public Dictionary<object, int> shoppingList { get; set; }
+    public static Dictionary<object, int> shoppingList { get; set; }
 
     public Store()
     {
@@ -19,16 +19,18 @@ namespace PierresBakery.Models
     {
       shoppingList.Add(item, quantity);
     }
-
-    public static Dictionary<object, int> GetShoppingList()
+    public Dictionary<object, int> GetShoppingList()
     {
       return shoppingList;
     }
 
-    // public static void DisplayShoppingList()
-    // {
-    //   for
-    // }
+    public void DisplayShoppingList()
+    {
+      foreach(KeyValuePair<object, int> purchaseItem in shoppingList)
+      {
+        System.Console.WriteLine(purchaseItem);
+      }
+    }
 
     
 
