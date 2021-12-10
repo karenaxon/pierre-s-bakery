@@ -1,3 +1,5 @@
+using System.Xml;
+using System.IO;
 using System.Reflection.Metadata;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PierresBakery.Models;
@@ -23,5 +25,11 @@ namespace PierresBakery.Tests
       Assert.AreEqual(typeof(Pastry), pastry.GetType());
     }
 
+    [TestMethod]
+    public void BreadPrice_ReturnsPriceOfABread_Double()
+    {
+      Bread bread = new Bread();
+      Assert.AreEqual(5, bread.Price);
+    }
   }
 }

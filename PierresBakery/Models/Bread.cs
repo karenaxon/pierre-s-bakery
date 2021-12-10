@@ -1,8 +1,13 @@
 namespace PierresBakery.Models
-// make sure the namespace matches the name of your project (the equivalent of ProjectName)
+
 {
   public class Bread
   {
-    
+    public double Price { get; set; }
+
+    public Bread()
+    {
+      Price = 0;
+    }
   }
 }
