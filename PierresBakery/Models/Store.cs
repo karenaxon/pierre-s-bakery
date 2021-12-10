@@ -8,14 +8,21 @@ namespace PierresBakery.Models
 {
   public class Store
   {
-    static List<object> order = new List<object>();
+    public static List<object> orderItemsList = new List<object>{};
+
+    public Store(object item)
+    {
+      orderItemsList.Add(this);
+    }
+
+    public static void DisplayList()
+    {
+      for(int i = 0; i < orderItemsList.Count; i++) 
+      {
+        System.Console.WriteLine(item);
+      }
+    }
+
   }
 
-  static void DisplayList()
-  {
-    for(int i = 0; i < order.Count; i++)
-    {
-      System.Console.WriteLine(order[i]);
-    }
-  }
 }
