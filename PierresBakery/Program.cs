@@ -18,9 +18,7 @@ namespace PierresBakery
         start = false;
       } 
       displayPrices();
-
-
-
+    
     }
 
     public static void displayPrices()
