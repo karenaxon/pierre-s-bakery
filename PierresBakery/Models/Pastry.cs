@@ -8,7 +8,7 @@ namespace PierresBakery.Models
 
     public Pastry()
     {
-      Price = 0;
+      Price = 2.00;
     }
   }
 }
