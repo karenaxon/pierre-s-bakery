@@ -29,7 +29,7 @@ namespace PierresBakery.Tests
     public void BreadPrice_ReturnsPriceOfABread_Double()
     {
       Bread bread = new Bread();
-      Assert.AreEqual(5, bread.Price);
+      Assert.AreEqual(5.00, bread.Price);
     }
   }
 }

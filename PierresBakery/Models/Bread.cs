@@ -7,7 +7,7 @@ namespace PierresBakery.Models
 
     public Bread()
     {
-      Price = 0;
+      Price = 5.00;
     }
   }
 }
