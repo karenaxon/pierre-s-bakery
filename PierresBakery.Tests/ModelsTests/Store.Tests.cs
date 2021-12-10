@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Xml;
 using System.IO;
 using System.Reflection.Metadata;
@@ -14,29 +15,40 @@ namespace PierresBakery.Tests
     [TestMethod]
     public void BreadConstructor_CreatesInstanceOfBread_Bread()
     {
-      Bread bread = new Bread();
+      Bread bread = new Bread("bread");
       Assert.AreEqual(typeof(Bread), bread.GetType());
     }
 
     [TestMethod]
     public void PastryConstructor_CreatesInstanceOfPastry_Pastry()
     {
-      Pastry pastry = new Pastry();
+      Pastry pastry = new Pastry("bread");
       Assert.AreEqual(typeof(Pastry), pastry.GetType());
     }
 
     [TestMethod]
     public void BreadPrice_ReturnsPriceOfABread_Double()
     {
-      Bread bread = new Bread();
+      Bread bread = new Bread("bread");
       Assert.AreEqual(5.00, bread.Price);
     }
 
     [TestMethod]
     public void PastryPrice_ReturnsPriceOfAPastry_Double()
     {
-      Pastry pastry = new Pastry();
+      Pastry pastry = new Pastry("pastry");
       Assert.AreEqual(2.00, pastry.Price);
     }
+
+    [TestMethod]
+    public void ShoppingListDictionary_VerifyBreadIsAdded_Int()
+    {
+      Bread bread = new Bread("bread");
+      Store order = new Store();
+      order.AddToShoppingList(bread, 1);
+      Dictionary<object, int> currentOrder = order.GetShoppingList();
+      Assert.AreEqual(0, currentOrder[bread]);
+    }
+
   }
 }
