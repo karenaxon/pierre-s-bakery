@@ -1,3 +1,4 @@
+using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
 using System.Reflection;
 using System;
@@ -13,22 +14,46 @@ namespace PierresBakery
     {
       if (start)
       {
-        System.Console.WriteLine("\nWelcome to Pierre's Bakery");
-        System.Console.WriteLine("---------------------------");
+        Console.WriteLine("\nWelcome to Pierre's Bakery");
+        Console.WriteLine("---------------------------");
         start = false;
       } 
       displayPrices();
+      makePurchaseSelection();
     
     }
 
     public static void displayPrices()
     {
-      System.Console.WriteLine("Menu and prices:\n");
-      System.Console.WriteLine("BREAD");
-      System.Console.WriteLine("1 loaf     $5\n2 loaves   $10\n3 loaves   $10 (get one free!)\n");
-      System.Console.WriteLine("PASTRIES");
-      System.Console.WriteLine("1 pastry   $2\n3 pastries $5\n4 pastries $7\n5 pastries $9\n6 pastries $10\n");
+      Console.WriteLine("Menu and prices:\n");
+      Console.WriteLine("BREAD");
+      Console.WriteLine("1 loaf     $5\n2 loaves   $10\n3 loaves   $10 (get one free!)\n");
+      Console.WriteLine("PASTRIES");
+      Console.WriteLine("1 pastry   $2\n3 pastries $5\n4 pastries $7\n5 pastries $9\n6 pastries $10\n");
     }
-  }
+
+    public static void makePurchaseSelection()
+    {
+      Console.WriteLine("What would you like to purchase?");
+      Console.WriteLine("Enter 1 for bread\nEnter 2 for pastries");
+      string input = Console.ReadLine();
+      int selection = int.Parse(input);
+
+      if(selection == 1)
+        {
+          // create bread and count input
+          Console.WriteLine("CREATE BREAD");
+        } else if (selection == 2)
+        {
+          // create pasty and count input
+          Console.WriteLine("CREATE PASTRY");
+        } else
+        {
+          Console.WriteLine("\n**** Invalid input ****\n");
+          makePurchaseSelection();
+        }
     
+    }
+
+  }
 }
