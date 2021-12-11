@@ -57,7 +57,7 @@ namespace PierresBakery.Tests
       Store order = new Store();
       order.AddToShoppingList(pastry.Name, 3);
       Dictionary<string, int> currentOrder = order.GetShoppingList();
-      Assert.AreEqual(0, currentOrder["pastry"]);
+      Assert.AreEqual(3, currentOrder["pastry"]);
     }
   }
 }
