@@ -1,5 +1,4 @@
-using System.Security.AccessControl;
-using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 using System.Reflection;
 using System;
 using PierresBakery.Models;
@@ -18,9 +17,11 @@ namespace PierresBakery
         Console.WriteLine("---------------------------");
         start = false;
       } 
+
       displayPrices();
       makePurchaseSelection();
-    
+      Console.WriteLine("test");
+      initOrder();
     }
 
     public static void displayPrices()
@@ -32,28 +33,51 @@ namespace PierresBakery
       Console.WriteLine("1 pastry   $2\n3 pastries $5\n4 pastries $7\n5 pastries $9\n6 pastries $10\n");
     }
 
-    public static void makePurchaseSelection()
+    public static string makePurchaseSelection()
     {
       Console.WriteLine("What would you like to purchase?");
       Console.WriteLine("Enter 1 for bread\nEnter 2 for pastries");
-      string input = Console.ReadLine();
-      int selection = int.Parse(input);
+      string selection = Console.ReadLine();
 
-      if(selection == 1)
-        {
-          // create bread and count input
-          Console.WriteLine("CREATE BREAD");
-        } else if (selection == 2)
-        {
-          // create pasty and count input
-          Console.WriteLine("CREATE PASTRY");
-        } else
-        {
-          Console.WriteLine("\n**** Invalid input ****\n");
-          makePurchaseSelection();
-        }
-    
+      if(selection == "1" || selection == "2")
+      {
+        return selection;
+      } else
+      {
+        Console.WriteLine("\n**** Invalid input ****\n");
+        makePurchaseSelection();
+      }
+      return selection;
     }
 
+    public static void initOrder()
+    {
+      Console.WriteLine("in init order");
+      
+      Bread bread = new Bread("bread");
+      Pastry pastry = new Pastry("pastry");
+      Store order = new Store();
+      string countString;
+      int count;
+      string selection = makePurchaseSelection();
+
+      if(selection == "1"){
+        Console.Write("How many loaves of bread would you like to purchase? Enter number here: ");
+        countString = Console.ReadLine();
+        count = int.Parse(countString);
+        order.AddToShoppingList(bread.Name, count);
+      } else if (selection == "2")
+      {
+        Console.Write("How many pastries would you like to purchase? Enter number here: ");
+        countString = Console.ReadLine();
+        count = int.Parse(countString);
+        order.AddToShoppingList(pastry.Name, count);
+      } 
+
+      foreach (var item in order.GetShoppingList())
+      {
+        Console.WriteLine(item.Value + " " + item.Key + " have been added to your list.");
+      }
+    }
   }
 }
