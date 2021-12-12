@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using System.Reflection;
 using System;
@@ -33,7 +34,7 @@ namespace PierresBakery
 
     public static string makePurchaseSelection()
     {
-      Console.Write("\nWhat would you like to purchase? [Enter 1 for bread or 2 for pastries]: ");
+      Console.Write("\nWhat would you like to add to your cart? [Enter 1 = bread | 2 = pastry]: ");
       string selection = Console.ReadLine();
 
       if(selection == "1" || selection == "2")
@@ -46,6 +47,7 @@ namespace PierresBakery
       }
       return selection;
     }
+
 
     public static void initOrder()
     {
@@ -74,10 +76,80 @@ namespace PierresBakery
         Main();
       } 
 
-      foreach (var item in order.GetShoppingList())
+      displayItemsInCart(order);
+      string nextChoice = nextChoiceSelection();
+      if(nextChoice == "1")
       {
-        Console.WriteLine(item.Value + " " + item.Key + " have been added to your list.");
+        addMoreToCart(order, bread, pastry);
+      } else if (nextChoice == "2")
+      {
+        //checkout
       }
+    }
+
+    public static void displayItemsInCart(Store currentOrder)
+    {
+      Console.WriteLine("\nItems in your shopping cart:");
+      Console.WriteLine("----------------------------");
+      foreach (var item in currentOrder.GetShoppingList())
+      {
+        string name = item.Key;
+        if(item.Value > 1) 
+        {
+          if(name == "bread")
+          {
+            Console.WriteLine(item.Value + " loaves of bread");
+          } else if(name == "pastry")
+          {
+            Console.WriteLine(item.Value + " pastries");
+          }
+        } else
+        {
+          Console.WriteLine(item.Value + " " + item.Key);
+        }
+      }
+    }
+
+    public static string nextChoiceSelection()
+    {
+      Console.Write("\nWould you like to add something else to your cart? [Enter 1 = 'yes' | 2 = check out]: ");
+      string input = Console.ReadLine();
+      return input;
+    }
+
+    public static void addMoreToCart(Store theOrder, Bread loaf, Pastry treat)
+    {
+      string countString2;
+      int count2;
+      string selection2 = makePurchaseSelection();
+
+      if(selection2 == "1")
+      {
+        Console.Write("How many loaves of bread would you like to purchase? ");
+        countString2 = Console.ReadLine();
+        count2 = int.Parse(countString2);
+        theOrder.AddToShoppingList(loaf.Name, count2);
+      } else if (selection2 == "2")
+      {
+        Console.Write("How many pastries would you like to purchase? ");
+        countString2 = Console.ReadLine();
+        count2 = int.Parse(countString2);
+        theOrder.AddToShoppingList(treat.Name, count2);
+      } else
+      {
+        Console.WriteLine("Something went wrong.");
+        Main();
+      }
+
+      displayItemsInCart(theOrder);
+      string nextChoice2 = nextChoiceSelection();
+      if(nextChoice2 == "1")
+      {
+        addMoreToCart(theOrder, loaf, treat);
+      } else if (nextChoice2 == "2")
+      {
+        //checkout
+      } 
     }
   }
 }
