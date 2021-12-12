@@ -19,7 +19,6 @@ namespace PierresBakery
       } 
 
       displayPrices();
-      makePurchaseSelection();
       initOrder();
     }
 
@@ -34,8 +33,7 @@ namespace PierresBakery
 
     public static string makePurchaseSelection()
     {
-      Console.WriteLine("What would you like to purchase?");
-      Console.WriteLine("Enter 1 for bread\nEnter 2 for pastries");
+      Console.Write("\nWhat would you like to purchase? [Enter 1 for bread or 2 for pastries]: ");
       string selection = Console.ReadLine();
 
       if(selection == "1" || selection == "2")
@@ -43,7 +41,7 @@ namespace PierresBakery
         return selection;
       } else
       {
-        Console.WriteLine("\n**** Invalid input ****\n");
+        Console.WriteLine("\n**** Invalid input ****");
         makePurchaseSelection();
       }
       return selection;
@@ -51,8 +49,6 @@ namespace PierresBakery
 
     public static void initOrder()
     {
-      Console.WriteLine("in init order");
-      
       Bread bread = new Bread("bread");
       Pastry pastry = new Pastry("pastry");
       Store order = new Store();
@@ -62,23 +58,26 @@ namespace PierresBakery
 
       if(selection == "1")
       {
-        Console.Write("How many loaves of bread would you like to purchase? Enter number here: ");
+        Console.Write("How many loaves of bread would you like to purchase? ");
         countString = Console.ReadLine();
         count = int.Parse(countString);
         order.AddToShoppingList(bread.Name, count);
-      }
-      // } else if (selection == "2")
-      // {
-      //   Console.Write("How many pastries would you like to purchase? Enter number here: ");
-      //   countString = Console.ReadLine();
-      //   count = int.Parse(countString);
-      //   order.AddToShoppingList(pastry.Name, count);
-      // } 
+      } else if (selection == "2")
+      {
+        Console.Write("How many pastries would you like to purchase? ");
+        countString = Console.ReadLine();
+        count = int.Parse(countString);
+        order.AddToShoppingList(pastry.Name, count);
+      } else
+      {
+        Console.WriteLine("Something went wrong.");
+        Main();
+      } 
 
-      // foreach (var item in order.GetShoppingList())
-      // {
-      //   Console.WriteLine(item.Value + " " + item.Key + " have been added to your list.");
-      // }
+      foreach (var item in order.GetShoppingList())
+      {
+        Console.WriteLine(item.Value + " " + item.Key + " have been added to your list.");
+      }
     }
   }
 }
