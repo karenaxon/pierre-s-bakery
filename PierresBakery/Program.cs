@@ -20,7 +20,6 @@ namespace PierresBakery
 
       displayPrices();
       makePurchaseSelection();
-      Console.WriteLine("test");
       initOrder();
     }
 
@@ -61,23 +60,25 @@ namespace PierresBakery
       int count;
       string selection = makePurchaseSelection();
 
-      if(selection == "1"){
+      if(selection == "1")
+      {
         Console.Write("How many loaves of bread would you like to purchase? Enter number here: ");
         countString = Console.ReadLine();
         count = int.Parse(countString);
         order.AddToShoppingList(bread.Name, count);
-      } else if (selection == "2")
-      {
-        Console.Write("How many pastries would you like to purchase? Enter number here: ");
-        countString = Console.ReadLine();
-        count = int.Parse(countString);
-        order.AddToShoppingList(pastry.Name, count);
-      } 
-
-      foreach (var item in order.GetShoppingList())
-      {
-        Console.WriteLine(item.Value + " " + item.Key + " have been added to your list.");
       }
+      // } else if (selection == "2")
+      // {
+      //   Console.Write("How many pastries would you like to purchase? Enter number here: ");
+      //   countString = Console.ReadLine();
+      //   count = int.Parse(countString);
+      //   order.AddToShoppingList(pastry.Name, count);
+      // } 
+
+      // foreach (var item in order.GetShoppingList())
+      // {
+      //   Console.WriteLine(item.Value + " " + item.Key + " have been added to your list.");
+      // }
     }
   }
 }
