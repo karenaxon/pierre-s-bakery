@@ -90,7 +90,8 @@ namespace PierresBakery
     public static void displayItemsInCart(Store currentOrder)
     {
       Console.WriteLine("\nItems in your shopping cart:");
-      Console.WriteLine("----------------------------");
+      Console.WriteLine("-------------------------------");
+
       foreach (var item in currentOrder.GetShoppingList())
       {
         string name = item.Key;
@@ -120,21 +121,50 @@ namespace PierresBakery
     public static void addMoreToCart(Store theOrder, Bread loaf, Pastry treat)
     {
       string countString2;
-      int count2;
       string selection2 = makePurchaseSelection();
 
       if(selection2 == "1")
       {
         Console.Write("How many loaves of bread would you like to purchase? ");
         countString2 = Console.ReadLine();
-        count2 = int.Parse(countString2);
-        theOrder.AddToShoppingList(loaf.Name, count2);
+        int inputtedCount = int.Parse(countString2);
+        int currentCountInCart = 0;
+        int updatedCount = 0;
+
+        foreach (var item in theOrder.GetShoppingList())
+        {
+          if(item.Key != loaf.Name)
+          {
+            theOrder.AddToShoppingList(loaf.Name, inputtedCount);
+            displayItemsInCart(theOrder);
+          }else
+          {
+            currentCountInCart = item.Value;
+          }
+        }
+        updatedCount = inputtedCount + currentCountInCart;
+        theOrder.UpdateCount(loaf.Name, updatedCount);
       } else if (selection2 == "2")
       {
         Console.Write("How many pastries would you like to purchase? ");
         countString2 = Console.ReadLine();
-        count2 = int.Parse(countString2);
-        theOrder.AddToShoppingList(treat.Name, count2);
+        int inputtedCount = int.Parse(countString2);
+        int currentCountInCart = 0;
+        int updatedCount = 0;
+
+        foreach (var item in theOrder.GetShoppingList())
+        {
+          if(item.Key != treat.Name)
+          {
+            theOrder.AddToShoppingList(treat.Name, inputtedCount);
+            displayItemsInCart(theOrder);
+          }else
+          {
+            currentCountInCart = item.Value;
+          }
+        }
+        updatedCount = inputtedCount + currentCountInCart;
+        theOrder.UpdateCount(treat.Name, updatedCount);
       } else
       {
         Console.WriteLine("Something went wrong.");

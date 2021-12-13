@@ -72,5 +72,10 @@ namespace PierresBakery.Tests
       order.UpdateCount(bread.Name, addItems);
       Assert.AreEqual(2, currentOrder[bread.Name]);
     }
-  }
+
+    [TestMethod]
+    public void Checkout_VerifyAmountDue_double()
+    {
+      
+    }
 }
