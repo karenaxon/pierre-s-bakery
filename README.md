@@ -38,7 +38,7 @@ After following the Setup/Installation steps above:
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
 ## Known Bugs
-* None
+* Unhandled exception. System.InvalidOperationException: Collection was modified; enumeration operation may not execute.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
