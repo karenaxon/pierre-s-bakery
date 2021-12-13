@@ -70,7 +70,7 @@ namespace PierresBakery.Tests
       order.AddToShoppingList(bread.Name, 3);
       int addItems = 2;
       order.UpdateCount(bread.Name, addItems);
-      Assert.AreEqual(3, currentOrder[bread.Name]);
+      Assert.AreEqual(2, currentOrder[bread.Name]);
     }
   }
 }
