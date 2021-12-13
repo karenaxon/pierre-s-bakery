@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Xml;
 using System.IO;
@@ -58,6 +59,18 @@ namespace PierresBakery.Tests
       order.AddToShoppingList(pastry.Name, 3);
       Dictionary<string, int> currentOrder = order.GetShoppingList();
       Assert.AreEqual(3, currentOrder["pastry"]);
+    }
+
+    [TestMethod]
+    public void UpdateCount_VerifyBreadCountUpdates_Int()
+    {
+      Bread bread = new Bread("bread");
+      Store order = new Store();
+      Dictionary<string, int> currentOrder = order.GetShoppingList();
+      order.AddToShoppingList(bread.Name, 3);
+      int addItems = 2;
+      order.UpdateCount(bread.Name, addItems);
+      Assert.AreEqual(3, currentOrder[bread.Name]);
     }
   }
 }
