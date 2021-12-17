@@ -28,5 +28,21 @@ namespace PierresBakery.Tests
       bread.CalcPrice(2);
       Assert.AreEqual(2, bread.Quantity);
     }
+
+    [TestMethod]
+    public void CalcPrice_ReturnsPriceForTwo_Double()
+    {
+      Bread bread = new Bread();
+      bread.CalcPrice(2);
+      Assert.AreEqual(10.00, bread.Price);
+    }
+
+    [TestMethod]
+    public void CalcPrice_ReturnsPriceForThree_Double()
+    {
+      Bread bread = new Bread();
+      bread.CalcPrice(3);
+      Assert.AreEqual(10.00, bread.Price);
+    }
   }
 }
