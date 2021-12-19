@@ -16,6 +16,13 @@ namespace PierresBakery.Models
     public void CalcPrice(int quantity)
     {
       Quantity = quantity;
+      int price = quantity * 5;
+      Price = price;
+
+      if(quantity % 3 == 0)
+      {
+        Price -= 5;
+      }
     }
   }
 }
