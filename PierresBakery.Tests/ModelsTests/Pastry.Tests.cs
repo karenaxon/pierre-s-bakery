@@ -25,8 +25,8 @@ namespace PierresBakery.Tests
     public void CalcPrice_ReturnsQuantityPassedIn_Int()
     {
       Pastry pastry = new Pastry();
-      pastry.CalcPrice(2);
-      Assert.AreEqual(2, pastry.Quantity);
+      pastry.CalcPrice(6);
+      Assert.AreEqual(10, pastry.Price);
     }
   }
 }
